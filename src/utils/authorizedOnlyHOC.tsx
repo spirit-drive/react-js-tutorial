@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ComponentType } from "react";
 import { isLoggedIn } from "@/api/auth";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 enum CheckState {
   initiated,
@@ -28,7 +28,7 @@ export function authorizedOnlyHoc<P>(
     }
 
     if (isAuthorized === CheckState.failed) {
-      return <Redirect to={redirectPath} />;
+      return <Navigate to={redirectPath} />;
     }
 
     return <Component {...props} />;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-  Redirect,
-  Switch,
+  Navigate,
+  Routes,
   Route,
   Link,
 } from "react-router-dom";
@@ -44,25 +44,13 @@ export const App: React.FC<unknown> = () => {
             </li>
           </ul>
         </nav>
-        <Switch>
-          <Route path="/courses">
-            <CoursesScreen />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/ticktacktoe">
-            <TicTacToeGame />
-          </Route>
-          <Route path="/flikr">
-            {() => {
-              result();
-            }}
-          </Route>
-          <Route path="*">
-            <Redirect to="/signin" />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/courses" element={<CoursesScreen />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/ticktacktoe" element={<TicTacToeGame />} />
+          <Route path="/flikr" element={() => result()} />
+          <Route path="*" element={<Navigate to="/signin" />} />
+        </Routes>
       </Router>
     </Provider>
   );

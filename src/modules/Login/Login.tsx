@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Redirect } from "react-router";
+import { Navigate } from "react-router";
 import { connect } from "react-redux";
 import { isEmpty } from "ramda";
 
@@ -46,7 +46,7 @@ export const LoginComponent: React.FC<Props> = ({ username, login }) => {
       <button>Login</button>
     </form>
   ) : (
-    <Redirect to="/ticktacktoe" />
+    <Navigate to="/ticktacktoe" />
   );
 };
 
